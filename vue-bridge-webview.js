@@ -14,9 +14,10 @@
    * @type {{bridgeWebViewDelay: number}}
    */
   var bridgeConfig = {
-    bridgeWebViewDelay : 0.3 * 1000
+    bridgeWebViewDelay : 0.3 * 1000 , // 页面启动多久向android/ios 请求数据
+    callHandle : {} // bridge android / ios
   }
-  
+
   var $bridge ;
 
 // ============ device init operation start ===========
@@ -52,8 +53,6 @@
     this.setupWebViewJavascriptBridge(function(bridge){
       $bridge = bridge
     })
-
-
   }else if(/(Android)/i.test(navigator.userAgent)) {
    this.connectWebViewJavascriptBridge(function(bridge){
      $bridge = bridge
@@ -93,12 +92,12 @@
      */
     callHandler: function(name,params,callback){
 
-      /* 解决ios/android 响应延迟问题 */
-      setInterval(function(){
+      /* 解决部分系统加载延迟导致 ios/android 不响应问题 */
+      bridgeConfig.callHandle[name] = setInterval(function(){
 
         $bridge.callHandler(name,params,callback)
 
-        clearInterval(this)
+        clearInterval(bridgeConfig.callHandle[name])
       },bridgeConfig.bridgeWebViewDelay)
     }
   }
