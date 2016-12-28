@@ -18,7 +18,7 @@
     callHandle : {} // bridge android / ios
   }
 
-  var $bridge ;
+  var $bridge = {};
 
 // ============ device init operation start ===========
 
