@@ -49,6 +49,7 @@
   }
 
   /* device detect for ios/android */
+  
   if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
     this.setupWebViewJavascriptBridge(function(bridge){
       $bridge = bridge
