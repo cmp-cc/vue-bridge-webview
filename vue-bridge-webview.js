@@ -95,9 +95,12 @@
       /* 解决部分系统加载延迟导致 ios/android 不响应问题 */
       bridgeConfig.callHandle[name] = setInterval(function(){
 
-        $bridge.callHandler(name,params,callback)
+        $bridge.callHandler(name,params,function(data){
+          clearInterval(bridgeConfig.callHandle[name])
 
-        clearInterval(bridgeConfig.callHandle[name])
+          callback(data);
+
+        })
       },bridgeConfig.bridgeWebViewDelay)
     }
   }
