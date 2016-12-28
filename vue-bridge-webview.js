@@ -94,11 +94,9 @@
     callHandler: function(name,params,callback){
 
       /* 解决部分系统加载延迟导致 ios/android 不响应问题 */
-      bridgeConfig.callHandle[name] = setInterval(function(){
-
+      setTimeout(function(){
         $bridge.callHandler(name,params,function(data){
-          clearInterval(bridgeConfig.callHandle[name])
-          if(callback != null) {
+          if(typeof callback == 'function'){
             callback(data);
           }
         })
