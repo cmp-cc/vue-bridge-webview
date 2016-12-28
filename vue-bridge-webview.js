@@ -98,9 +98,9 @@
 
         $bridge.callHandler(name,params,function(data){
           clearInterval(bridgeConfig.callHandle[name])
-
-          callback(data);
-
+          if(callback != null) {
+            callback(data);
+          }
         })
       },bridgeConfig.bridgeWebViewDelay)
     }
