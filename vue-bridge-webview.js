@@ -15,10 +15,22 @@
    */
   var bridgeConfig = {
     bridgeWebViewDelay : 0.3 * 1000 , // 页面启动多久向android/ios 请求数据
-    callHandle : {} // bridge android / ios
+    callHandle : {}, // bridge android / ios
+    silent : false
   }
 
-  var $bridge = {};
+  var $bridge = {
+    registerHandler : function (name,callback) {
+      if(bridgeConfig.silent){
+        console.log(name,' register handler failure')
+      }
+    },
+    callHandler : function (name, params, callback) {
+      if(bridgeConfig.silent){
+        console.log(name,' call handler webView failure')
+      }
+    }
+  };
 
 // ============ device init operation start ===========
 
@@ -62,12 +74,14 @@
 
 // ==============device init operation end ============
 
-
   var VueBridgeWebView = {
 
     install: function(Vue) {
       Vue.prototype.$bridge = this
       Vue.bridge = this
+
+      // config
+      bridgeConfig.slient = Vue.config.slient
     },
 
     /**
