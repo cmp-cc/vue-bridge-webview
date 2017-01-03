@@ -63,11 +63,11 @@
   /* device detect for ios/android */
   
   if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-    this.setupWebViewJavascriptBridge(function(bridge){
+    setupWebViewJavascriptBridge(function(bridge){
       $bridge = bridge
     })
   }else if(/(Android)/i.test(navigator.userAgent)) {
-   this.connectWebViewJavascriptBridge(function(bridge){
+   connectWebViewJavascriptBridge(function(bridge){
      $bridge = bridge
    })
   }
@@ -109,13 +109,11 @@
 
       /* 解决部分系统加载延迟导致 ios/android 不响应问题 */
       setTimeout(function(){
-        if($bridge.callHandler){
           $bridge.callHandler(name,params,function(data){
             if(typeof callback == 'function'){
               callback(data);
             }
           })
-        }
       },bridgeConfig.bridgeWebViewDelay)
     }
   }
