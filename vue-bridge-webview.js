@@ -93,9 +93,13 @@
      */
     registerHandler : function(name, registerCallback){
       if($bridge['registerHandler']){
-        $bridge.registerHandler(name,registerCallback)
+
+        setTimeout(function(){
+          $bridge.registerHandler(name,registerCallback)
+        },bridgeConfig.bridgeWebViewDelay)
+
       }else if(bridgeConfig.slient){
-        console.error("don't built-in WebView invoking ",name,'{registerHandler}')
+        console.log("don't built-in WebView invoking ",name,'{registerHandler}')
       }
     },
 
@@ -121,7 +125,7 @@
             }
           })
         }else {
-          console.error("don't built-in WebView invoking ",name,'{callHandler}')
+          console.log("don't built-in WebView invoking ",name,'{callHandler}')
         }
 
 
