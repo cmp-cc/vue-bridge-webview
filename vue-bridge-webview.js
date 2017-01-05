@@ -92,7 +92,11 @@
      * @param registerCallback 回调的响应事件
      */
     registerHandler : function(name, registerCallback){
-      $bridge.registerHandler(name,registerCallback)
+      if($bridge['registerHandler']){
+        $bridge.registerHandler(name,registerCallback)
+      }else if(bridgeConfig.slient){
+        console.error("don't built-in WebView invoking ",name,'{registerHandler}')
+      }
     },
 
     /**
@@ -109,11 +113,18 @@
 
       /* 解决部分系统加载延迟导致 ios/android 不响应问题 */
       setTimeout(function(){
+
+        if($bridge['callHandler']){
           $bridge.callHandler(name,params,function(data){
             if(typeof callback == 'function'){
               callback(data);
             }
           })
+        }else {
+          console.error("don't built-in WebView invoking ",name,'{callHandler}')
+        }
+
+
       },bridgeConfig.bridgeWebViewDelay)
     }
   }
@@ -123,8 +134,10 @@
   } else if (typeof define == "function" && define.amd) {
     define([], function(){ return VueBridgeWebView; })
   } else if (window.Vue) {
-    window.VueBridgeWebView = VueBridgeWebView
+    window.$bridge = VueBridgeWebView
     Vue.use(VueBridgeWebView);
+  }else{
+    window.$bridge = VueBridgeWebView
   }
 
 })()
