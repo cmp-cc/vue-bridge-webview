@@ -98,7 +98,7 @@
           $bridge.registerHandler(name,registerCallback)
         },bridgeConfig.bridgeWebViewDelay)
 
-      }else if(bridgeConfig.slient){
+      }else{
         console.log("don't built-in WebView invoking ",name,'{registerHandler}')
       }
     },
@@ -129,9 +129,6 @@
         }else {
           console.log("don't built-in WebView invoking ",name,'{callHandler}')
         }
-
-
-
     }
   }
 
