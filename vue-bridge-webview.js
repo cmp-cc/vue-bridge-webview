@@ -14,7 +14,7 @@
    * @type {{bridgeWebViewDelay: number}}
    */
   var bridgeConfig = {
-    bridgeWebViewDelay : 0.3 * 1000 , // 页面启动多久向android/ios 请求数据
+    bridgeWebViewDelay : 0.2 * 1000 ,
     callHandle : {}, // bridge android / ios
     silent : false
   }
