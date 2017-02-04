@@ -1,0 +1,27 @@
+{
+  "name": "vue-bridge-webview",
+  "version": "1.0.0",
+  "description": "javascript bridge android/ios webview",
+  "main": "vue-bridge-webview.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmp-cc/vue-bridge-webview.git"
+  },
+  "keywords": [
+    "javascript",
+    "webapp",
+    "android",
+    "ios",
+    "bridge",
+    "webview"
+  ],
+  "author": "cmp-cc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cmp-cc/vue-bridge-webview/issues"
+  },
+  "homepage": "https://github.com/cmp-cc/vue-bridge-webview#readme"
+}
