@@ -18,8 +18,10 @@ download [vue-bridge-webview](https://github.com/cmp-cc/vue-bridge-webview/blob/
 
 ## Api
 * registerHandler : function(name, registerCallback)
-** Android / IOS 调用JS,需要明确调用的`function名称` [回调名称,回调函数] **
+
+**Android / IOS 调用JS,需要明确调用的`function名称` [回调名称,回调函数]**
 * callHandler: function(name,params,callback)
+
 **JS 调用 Android / IOS [回调名称,请求参数,回调函数]**
 
 ## demo
