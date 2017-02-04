@@ -29,7 +29,7 @@ download [vue-bridge-webview](https://github.com/cmp-cc/vue-bridge-webview/blob/
 ```
    created: function(){  // vue project
 
-        // 当android/ios 调用函数名称`refreshPage`时,刷新界面
+        // android/ios 调用js 刷新界面
         this.$bridge.registerHandler("refreshPage",function(){
             document.location.reload();
         })
