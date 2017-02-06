@@ -25,7 +25,7 @@ download [vue-bridge-webview](https://github.com/cmp-cc/vue-bridge-webview/blob/
 **JS 调用 Android / IOS [回调名称,请求参数,回调函数]**
 
 ## demo
-**vue-bridge-webview 并不依赖任何框架,只是对`vue`相对更加友好**
+**vue-bridge-webview 并不依赖任何框架,只是相对`vue`更加友好**
 ```
    created: function(){  // vue project
 
