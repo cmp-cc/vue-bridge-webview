@@ -1,55 +1,55 @@
 
+# vue-bridge-webview
 
-#[vue-bridge-webview](https://github.com/cmp-cc/vue-bridge-webview)
-
->  javascript bridge android/ios webview
-
----
+javascript bridge android/ios webview
 
 ## Installation
+
+### Browser
+
+```
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-bridge-webview@1.1.0/vue-bridge-webview.js"></script>
+```
+
+### Package Managers
+
 ```sh
 npm install vue-bridge-webview --save
 
+import Vue from 'vue'
+import VueBridgeWebview from 'vue-bridge-webview'
+Vue.use(VueBridgeWebview)
+
+// set default config 
+VueBridgeWebview.config(0,true);
 ```
-
-**or**
-
-download [vue-bridge-webview](https://github.com/cmp-cc/vue-bridge-webview/blob/master/vue-bridge-webview.js)
 
 ## Api
-* registerHandler : function(name, registerCallback)
 
-**Android / IOS 调用JS,需要明确调用的`function名称` [回调名称,回调函数]**
-* callHandler: function(name,params,callback)
-
-**JS 调用 Android / IOS [回调名称,请求参数,回调函数]**
-
-## demo
-**vue-bridge-webview 并不依赖任何框架,只是相对`vue`更加友好**
+syntax format: **[this | Vue | window].$bridge.[method]**
+* Set global config
 ```
-   created: function(){  // vue project
-
-        // android/ios 调用js 刷新界面
-        this.$bridge.registerHandler("refreshPage",function(){
-            document.location.reload();
-        })
-
-        // js 调用 android/ios 获取用户信息
-        this.$bridge.callHandler('getUserInfo',{},function(data){
-           ... // 相关业务操作
-        })
-    },
-
-
-    如上等价于, 同于也可以应用于 ng2/react
-    window.$bridge.registerHandler("refreshPage",function(){
-                document.location.reload();
-       })
-    window.$bridge.callHandler('getUserInfo',{},function(data){
-               ... // 相关业务操作
-       })
+$bridge.config(handleDelayTime,silent); // default handleDelayTime = 0 * 1000,silent = false 
 ```
+* Android/IOS invoke JS
+```
+$bridge.registerHandler : function(name, registerCallback) // callback name, callback function
 
+example: refersh page view
+[this|Vue|window].$bridge.registerHandler("refreshPage",function(){
+                              document.location.reload();
+                          })
+```
+* JS invoke Android/IOS
+```
+$bridge.callHandler: function(name,params,callback) // callback name, request params, callback function
+
+example: get userInfo
+[this|Vue|window].$bridge.callHandler('getUserInfo',{},function(data){
+           ... 
+        })
+```
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)

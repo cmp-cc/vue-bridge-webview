@@ -1,5 +1,5 @@
 /**
- * Vue Bridge Webview v1.0
+ * Vue Bridge Webview v1.1.0
  * https://github.com/cmp-cc/vue-bridge-webview
  *
  * Copyright 2016, cmp-cc
@@ -14,7 +14,7 @@
    * @type {{bridgeWebViewDelay: number}}
    */
   var bridgeConfig = {
-    bridgeWebViewDelay : 0.2 * 1000 ,
+    bridgeWebViewDelay : 0,
     callHandle : {}, // bridge android / ios
     silent : false
   }
@@ -82,6 +82,15 @@
 
       // config
       bridgeConfig.silent = Vue.config.silent
+    },
+
+    config : function(bridgeWebViewDelay,silent) {
+      if(bridgeWebViewDelay) {
+        bridgeConfig.bridgeWebViewDelay = bridgeWebViewDelay;
+      }
+      if(silent) {
+        bridgeConfig.silent = silent;
+      }
     },
 
     /**
