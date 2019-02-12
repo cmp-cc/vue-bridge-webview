@@ -81,7 +81,7 @@
       Vue.bridge = this
 
       // config
-      bridgeConfig.slient = Vue.config.slient
+      bridgeConfig.silent = Vue.config.silent
     },
 
     /**
